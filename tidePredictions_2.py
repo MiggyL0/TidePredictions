@@ -6,8 +6,7 @@ Created on Fri Mar 18 13:09:44 2022
 """
 
 import requests
-
-
+import json
 
 payload = {
 'product': 'predictions',
@@ -23,5 +22,6 @@ payload = {
 }
 
 r = requests.get('https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?', params=payload)
-
-print(r.text)
+package_json = r.text
+package_str = json.dumps(package_json, indent=2)
+print(package_str)
